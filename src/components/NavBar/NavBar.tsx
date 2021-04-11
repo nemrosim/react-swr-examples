@@ -31,7 +31,10 @@ export const NavBar: React.FC = () => {
                             <Link className={`nav-link ${pathname === '/users' && 'active'}`} to='/users'>Users</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${pathname === '/image' && 'active'}`} to="/image">Image</Link>
+                            <Link className={`nav-link ${pathname === '/image' && 'active'}`} to="/image">Load image to server</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className={`nav-link ${pathname === '/load-image' && 'active'}`} to="/load-image">Load image from server</Link>
                         </li>
                     </ul>
                     <div className="d-flex">

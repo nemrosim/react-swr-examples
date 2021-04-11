@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
-import { useUploadImage } from "../../hooks";
+import React from 'react';
+import { useLoadImage } from "../../hooks/api";
 
-export const Image: React.FC = () => {
+export const LoadImage: React.FC = () => {
 
-    const [selectedFile, setSelectedFile] = useState<File>();
-
-
-    const {data, error, isLoading} = useUploadImage(selectedFile as any);
-
-    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = (event.target.files as FileList)[0];
-        setSelectedFile(file)
-    };
+    const {data, error, isLoading} = useLoadImage();
 
     if (error) {
         return (
@@ -28,15 +20,6 @@ export const Image: React.FC = () => {
 
     return (
         <div className="container m-3">
-            <div className="m-3">
-                <input className="form-control" type="file" onChange={changeHandler}/>
-            </div>
-            {
-                data && (
-                    <img src={data} className="img-fluid" alt="..."/>
-
-                )
-            }
             {
                 isLoading && (
                     <div className="d-flex justify-content-center">
@@ -44,6 +27,12 @@ export const Image: React.FC = () => {
                             <span className="visually-hidden">Loading...</span>
                         </div>
                     </div>
+                )
+            }
+            {
+                data && (
+                    <img src={data} className="img-fluid" alt="..."/>
+
                 )
             }
         </div>

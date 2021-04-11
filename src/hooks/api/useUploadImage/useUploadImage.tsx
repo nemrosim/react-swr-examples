@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fileFetcher } from "../../../utils/fetcher";
+import { imageUploadFetcher } from "../../../utils/fetcher";
 import { useEffect, useState } from "react";
 
 interface ErrorResponseProps {
@@ -7,7 +7,7 @@ interface ErrorResponseProps {
     message: string,
 }
 
-export const useImage = (file: File | undefined) => {
+export const useUploadImage = (file: File | undefined) => {
     const args = file ? ['http://localhost:8000/api/file', file] : null;
 
     const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,7 @@ export const useImage = (file: File | undefined) => {
         error,
     } = useSWR<string, ErrorResponseProps>(
         args,
-        fileFetcher,
+        imageUploadFetcher,
         {
             // will send another request if focus on page
             revalidateOnFocus: false,

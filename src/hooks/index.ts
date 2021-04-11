@@ -1,1 +1,1 @@
-export { useUsers, useImage } from './api'
+export { useUsers, useUploadImage } from './api'

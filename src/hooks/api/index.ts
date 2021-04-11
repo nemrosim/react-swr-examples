@@ -1,2 +1,3 @@
 export { useUsers } from './useUsers';
-export { useImage } from './useImage';
+export { useUploadImage } from './useUploadImage';
+export { useLoadImage } from './useLoadImage';

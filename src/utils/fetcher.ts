@@ -34,7 +34,7 @@ const toBase64 = (file: File | Blob) => new Promise((resolve, reject) => {
     reader.onerror = error => reject(error);
 });
 
-export const fileFetcher = async (url: string, file: File) => {
+export const imageUploadFetcher = async (url: string, file: File) => {
 
     const base64 = await toBase64(file) as string;
 
@@ -49,4 +49,13 @@ export const fileFetcher = async (url: string, file: File) => {
     await errorHandler(res);
 
     return await res.text();
+}
+
+export const imageLoadFetcher = async (url: string) => {
+    const res = await fetch(url)
+
+    await errorHandler(res);
+
+    const blob = await res.blob();
+    return await toBase64(blob) as string;
 }
